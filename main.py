@@ -4,8 +4,8 @@ import os
 import json
 import fitz
 
-INPUT_DIR = "app/input"
-OUTPUT_DIR = "app/output"
+INPUT_DIR = "input"
+OUTPUT_DIR = "output"
 
 
 def detect_heading_level(font_size, font_sizes_sorted):
