@@ -1,5 +1,76 @@
-1. Build the file using 
-2. Make sure you have the 
-2. For windows: Run the command `docker run --name adobe-1 --rm -v $C:\Users\TANISHQ\Desktop\adobe/input:/app/input -v $C:\Users\TANISHQ\Desktop\adobe/output:/app/output mysolution`
-3. For Mac run the command `docker run --rm -v $(pwd)/input:/app/input -v $(pwd)/output:/app/output --
-network none mysolutionname:somerandomidentifier`
+# 🧠 Adobe Hackathon – Document Outline Extractor
+
+This solution extracts a structured outline (title, H1, H2, H3 headings) from PDF documents using Python and PyMuPDF, packaged in a Docker container. It processes all PDFs from an input folder and generates corresponding `.json` files.
+
+---
+
+## 📦 How It Works
+
+- Takes PDF files from the `/app/input` directory.
+- Parses each document and detects:
+  - 📌 Title
+  - 📑 Headings (H1, H2, H3) with their text and page number.
+- Outputs a JSON file for each PDF to `/app/output`.
+
+Example output format:
+```json
+{
+  "title": "Understanding AI",
+  "outline": [
+    { "level": "H1", "text": "Introduction", "page": 1 },
+    { "level": "H2", "text": "History of AI", "page": 2 },
+    { "level": "H3", "text": "Symbolic AI", "page": 3 }
+  ]
+}
+```
+
+
+
+0. Make sure you have docker installed.
+
+    Mac: https://youtu.be/gcacQ29AjOo?si=wx9Bo0TkpyM5nMcE
+
+    Windows: https://youtu.be/JBEUKrjbWqg?si=qLaanGPwb5vK598U
+
+1. to build the image: `docker build --platform linux/amd64 -t mysolution:<your-tag> .`
+Replace <your-tag> with any name like v1, v2, etc.
+2. project-root/
+
+    ├── Dockerfile
+
+    ├── main.py
+
+    ├── requirements.txt
+
+    ├── input/
+
+    │       ├── document1.pdf
+
+    │       └── document2.pdf
+
+    └── output/  ← (will be auto-created if not present)
+    Place your input PDFs inside the input/ folder.
+
+3. For windows: 
+``` 
+  docker run --rm `
+  -v "${PWD}\input:/app/input" `
+  -v "${PWD}\output:/app/output" `
+  mysolution:<your-tag>
+```
+   b. For mac:
+   ``` 
+   docker run --rm \
+  -v $(pwd)/input:/app/input \
+  -v $(pwd)/output:/app/output \
+  --network none \
+  mysolution:<your-tag>
+```
+
+4. Check the output at:
+
+    output/
+
+    ├── document1.json
+
+    ├── document2.json
