@@ -1,32 +1,33 @@
-import os
-import json
+import os as os_ru
+import json as json_ru
 from extractor import extract_outline_ex
 
-INPUT_DIR = "input"
-OUTPUT_DIR = "output"
+INPUT_DIR_ru = "input"
+OUTPUT_DIR_ru = "output"
 
 if __name__ == "__main__":
     # Ensure output directory exists
-    os.makedirs(OUTPUT_DIR, exist_ok=True)
+    os_ru.makedirs(OUTPUT_DIR_ru, exist_ok=True)
 
     # Process all PDFs in input directory
-    for filename in os.listdir(INPUT_DIR):
-        if filename.lower().endswith(".pdf"):
-            pdf_path = os.path.join(INPUT_DIR, filename)
-            print(f"Processing: {filename}")
+    for filename_ru in os_ru.listdir(INPUT_DIR_ru):
+        if filename_ru.lower().endswith(".pdf"):
+            pdf_path_ru = os_ru.path.join(INPUT_DIR_ru, filename_ru)
+            print(f"Processing: {filename_ru}")
             
             try:
                 # Extract outline
-                result = extract_outline(pdf_path)
+                result_ru = extract_outline_ex(pdf_path_ru)
                 
                 # Save results
-                json_filename = f"{os.path.splitext(filename)[0]}.json"
-                output_path = os.path.join(OUTPUT_DIR, json_filename)
+                json_filename_ru = f"{os_ru.path.splitext(filename_ru)[0]}.json"
+                output_path_ru = os_ru.path.join(OUTPUT_DIR_ru, json_filename_ru)
                 
-                with open(output_path, "w") as f:
-                    json.dump(result, f, indent=2)
+                with open(output_path_ru, "w") as f_ru:
+                    json_ru.dump(result_ru, f_ru, indent=2)
                     
-                print(f"Created: {json_filename}")
+                print(f"Created: {json_filename_ru}")
                 
-            except Exception as e:
-                print(f"Error processing {filename}: {str(e)}")
+            except Exception as e_ru:
+                print(f"Error processing {filename_ru}: {str(e_ru)}")
+
