@@ -12,6 +12,16 @@ This solution extracts a structured outline (title, H1, H2, H3 headings) from PD
   - 📑 Headings (H1, H2, H3) with their text and page number.
 - Outputs a JSON file for each PDF to `/app/output`.
 
+ ## 💡 Summary of Logic
+
+| Section              | Purpose                                          |
+| -------------------- | ------------------------------------------------ |
+| Title Extraction     | Find big, centered text at the top of first page |
+| Word Grouping        | Combine words into lines using vertical position |
+| Heading Detection    | Heuristics: size, length, margins                |
+| Font Size Clustering | Detect top 3 sizes = H1, H2, H3                  |
+| Hierarchy Validation | Enforce logical document outline order           |
+
 Example output format:
 ```json
 {
