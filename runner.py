@@ -1,6 +1,6 @@
 import os
 import json
-from extractor import extract_outline
+from extractor import extract_outline_ex
 
 INPUT_DIR = "input"
 OUTPUT_DIR = "output"
