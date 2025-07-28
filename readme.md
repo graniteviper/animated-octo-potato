@@ -48,7 +48,9 @@ Replace <your-tag> with any name like v1, v2, etc.
 
     ├── Dockerfile
 
-    ├── main.py
+    ├── runner.py
+   
+    ├── extractor.py
 
     ├── requirements.txt
 
@@ -61,7 +63,7 @@ Replace <your-tag> with any name like v1, v2, etc.
     └── output/  ← (will be auto-created if not present)
     Place your input PDFs inside the input/ folder.
 
-3. For windows: 
+4. For windows: 
 ``` 
   docker run --rm `
   -v "${PWD}\input:/app/input" `
